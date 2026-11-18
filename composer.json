@@ -1,0 +1,63 @@
+{
+    "name": "webwizardsusa/filament-resource-browser",
+    "description": "Browse, select and create the records of one Filament resource from another, in a modal: pick an image for a post, or add a new one, without leaving the form.",
+    "keywords": [
+        "laravel",
+        "filamentphp",
+        "filament",
+        "filament-plugin",
+        "resource-browser",
+        "media-browser",
+        "webwizardsusa"
+    ],
+    "homepage": "https://github.com/webwizardsusa/filament-resource-browser",
+    "support": {
+        "issues": "https://github.com/webwizardsusa/filament-resource-browser/issues",
+        "source": "https://github.com/webwizardsusa/filament-resource-browser"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jamie Holly",
+            "email": "jamie@webwizardsusa.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "filament/filament": "^5.0",
+        "spatie/laravel-package-tools": "^1.92"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^11.0",
+        "pestphp/pest": "^5.2",
+        "pestphp/pest-plugin-laravel": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webwizardsusa\\ResourceBrowser\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Webwizardsusa\\ResourceBrowser\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "pest"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webwizardsusa\\ResourceBrowser\\ResourceBrowserServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
