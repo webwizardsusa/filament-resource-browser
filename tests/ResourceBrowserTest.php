@@ -68,6 +68,29 @@ it('inserts the picked record with the select form state', function (): void {
         ]);
 });
 
+it('fills the select form with its defaults', function (): void {
+    $note = Note::query()->create(['title' => 'First']);
+
+    Livewire::test(ResourceSelect::class, [
+        'browserResourceType' => NoteBrowser::class,
+        'browserOptions' => ['defaultCaption' => 'From the options'],
+        'resourceId' => $note->getKey(),
+    ])
+        ->assertSet('insertArguments.caption', 'From the options');
+});
+
+it('fills the select form with the insert arguments over its defaults', function (): void {
+    $note = Note::query()->create(['title' => 'First']);
+
+    Livewire::test(ResourceSelect::class, [
+        'browserResourceType' => NoteBrowser::class,
+        'browserOptions' => ['defaultCaption' => 'From the options'],
+        'resourceId' => $note->getKey(),
+        'insertArguments' => ['caption' => 'From the field'],
+    ])
+        ->assertSet('insertArguments.caption', 'From the field');
+});
+
 it('fills the resource form with its defaults to add a record', function (): void {
     Livewire::test(ResourceForm::class, ['browserResourceType' => NoteBrowser::class])
         ->assertSet('formData.title', 'Untitled');

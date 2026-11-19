@@ -9,7 +9,8 @@ use Webwizardsusa\ResourceBrowser\BrowsableResource;
 use Webwizardsusa\ResourceBrowser\Concerns\BrowsableFromResource;
 
 /**
- * Browses NoteResource, with a caption to fill in once a Note is picked. The preview starts with the `prefix` option.
+ * Browses NoteResource, with a caption to fill in once a Note is picked, which defaults to the `defaultCaption` option.
+ * The preview starts with the `prefix` option.
  */
 class NoteBrowser extends BrowsableResource
 {
@@ -23,7 +24,8 @@ class NoteBrowser extends BrowsableResource
     public function getBrowserSelectForm(Schema $schema, mixed $resource): Schema
     {
         return $schema->components([
-            TextInput::make('caption'),
+            TextInput::make('caption')
+                ->default($this->getOption('defaultCaption')),
         ]);
     }
 

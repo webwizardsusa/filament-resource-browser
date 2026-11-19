@@ -32,10 +32,21 @@ class ResourceSelect extends Component implements HasActions, HasSchemas
      */
     public array $insertArguments = [];
 
+    /**
+     * Fills the select form with its defaults, then with the insert arguments over them: filling it with the
+     * arguments alone would skip the defaults.
+     */
     public function mount(mixed $resourceId): void
     {
         $this->resourceId = $resourceId;
-        $this->form->fill($this->insertArguments);
+
+        $insertArguments = $this->insertArguments;
+
+        $this->form->fill();
+
+        if (filled($insertArguments)) {
+            $this->form->fill([...$this->form->getRawState(), ...$insertArguments]);
+        }
     }
 
     public function insertAction(): Action
