@@ -1,5 +1,8 @@
 # Filament Resource Browser
 
+> **Under active development.** This package is still changing and may not be ready for production use yet. Until
+> 1.0, a minor release can include breaking changes, so check the changelog before you upgrade.
+
 ![Resource Browser: the Images resource browsed as cards in a modal, and the form to fill in for the picked image](https://raw.githubusercontent.com/webwizardsusa/filament-resource-browser/main/art/resource-browser-banner.webp)
 
 [![Latest version on Packagist](https://img.shields.io/packagist/v/webwizardsusa/filament-resource-browser.svg)](https://packagist.org/packages/webwizardsusa/filament-resource-browser)
