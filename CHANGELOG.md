@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/webwizardsusa/filament-resource-browser/compare/v0.1.1...v0.1.2) (2026-11-19)
+
+
+### Bug Fixes
+
+* fill the select form with its defaults before the insert arguments ([#5](https://github.com/webwizardsusa/filament-resource-browser/issues/5)) ([7fc0704](https://github.com/webwizardsusa/filament-resource-browser/commit/7fc07043dafbe1f04368e4e3709f5c5b86cde568))
+
 ## [0.1.1](https://github.com/webwizardsusa/filament-resource-browser/compare/v0.1.0...v0.1.1) (2026-11-19)
 
 
