@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/webwizardsusa/filament-resource-browser/compare/v0.1.0...v0.1.1) (2026-11-19)
+
+
+### Bug Fixes
+
+* pass options() from ResourceBrowserField to the browser it opens ([#3](https://github.com/webwizardsusa/filament-resource-browser/issues/3)) ([741bcb7](https://github.com/webwizardsusa/filament-resource-browser/commit/741bcb714340394b6a551775673755ef356bd3a6))
+
 ## 0.1.0 (2026-11-18)
 
 
