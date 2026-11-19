@@ -21,9 +21,9 @@ class ResourceBrowserAction extends Action
     protected mixed $selected = null;
 
     /**
-     * @var array<string, mixed>
+     * @var array<string, mixed>|Closure
      */
-    protected array $options = [];
+    protected array|Closure $options = [];
 
     /**
      * @var array<string, mixed>|Closure
@@ -100,9 +100,9 @@ class ResourceBrowserAction extends Action
     /**
      * Options passed to the BrowsableResource's constructor.
      *
-     * @param  array<string, mixed>  $options
+     * @param  array<string, mixed>|Closure  $options
      */
-    public function options(array $options): static
+    public function options(array|Closure $options): static
     {
         $this->options = $options;
 
@@ -114,7 +114,7 @@ class ResourceBrowserAction extends Action
      */
     public function getOptions(): array
     {
-        return $this->options;
+        return (array) $this->evaluate($this->options);
     }
 
     public function resource(string|Closure $resource): static
