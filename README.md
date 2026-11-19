@@ -1,5 +1,7 @@
 # Filament Resource Browser
 
+![Resource Browser: the Images resource browsed as cards in a modal, and the form to fill in for the picked image](https://raw.githubusercontent.com/webwizardsusa/filament-resource-browser/main/art/resource-browser-banner.webp)
+
 [![Latest version on Packagist](https://img.shields.io/packagist/v/webwizardsusa/filament-resource-browser.svg)](https://packagist.org/packages/webwizardsusa/filament-resource-browser)
 [![Tests](https://github.com/webwizardsusa/filament-resource-browser/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/webwizardsusa/filament-resource-browser/actions/workflows/tests.yml)
 [![Total downloads](https://img.shields.io/packagist/dt/webwizardsusa/filament-resource-browser.svg)](https://packagist.org/packages/webwizardsusa/filament-resource-browser/stats)
@@ -9,6 +11,12 @@
 Reuse one Filament resource from another: browse its records in a modal, pick one to insert, or add or edit one
 without leaving the form you're in. Pick an image for a post from the images resource, for example, filling in its
 alt text as you insert it.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/webwizardsusa/filament-resource-browser/main/art/resource-browser-browse.webp" alt="Browsing the Images resource as cards in a modal" width="32%">
+  <img src="https://raw.githubusercontent.com/webwizardsusa/filament-resource-browser/main/art/resource-browser-select.webp" alt="The picked image with its alt text, caption, style, alignment and width" width="32%">
+  <img src="https://raw.githubusercontent.com/webwizardsusa/filament-resource-browser/main/art/resource-browser-inserted.webp" alt="The picked image inserted into a rich editor" width="32%">
+</p>
 
 Requires PHP 8.3+ and Filament 5.
 
