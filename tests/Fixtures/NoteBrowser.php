@@ -9,7 +9,7 @@ use Webwizardsusa\ResourceBrowser\BrowsableResource;
 use Webwizardsusa\ResourceBrowser\Concerns\BrowsableFromResource;
 
 /**
- * Browses NoteResource, with a caption to fill in once a Note is picked.
+ * Browses NoteResource, with a caption to fill in once a Note is picked. The preview starts with the `prefix` option.
  */
 class NoteBrowser extends BrowsableResource
 {
@@ -29,6 +29,6 @@ class NoteBrowser extends BrowsableResource
 
     public function fieldPreview(mixed $resource): mixed
     {
-        return new HtmlString('<p>'.e($resource?->title).'</p>');
+        return new HtmlString('<p>'.e($this->getOption('prefix', '')).e($resource?->title).'</p>');
     }
 }

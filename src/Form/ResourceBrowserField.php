@@ -5,6 +5,7 @@ namespace Webwizardsusa\ResourceBrowser\Form;
 use Closure;
 use Filament\Forms\Components\Field;
 use Webwizardsusa\ResourceBrowser\Actions\ResourceBrowserAction;
+use Webwizardsusa\ResourceBrowser\BrowsableResource;
 use Webwizardsusa\ResourceBrowser\Concerns\ComponentInteractsWithBrowser;
 
 /**
@@ -12,7 +13,9 @@ use Webwizardsusa\ResourceBrowser\Concerns\ComponentInteractsWithBrowser;
  */
 class ResourceBrowserField extends Field
 {
-    use ComponentInteractsWithBrowser;
+    use ComponentInteractsWithBrowser {
+        getResourceBrowser as buildResourceBrowser;
+    }
 
     protected string $view = 'resource-browser::resource-browser-field';
 
@@ -24,6 +27,11 @@ class ResourceBrowserField extends Field
      * @var array<string, mixed>|Closure
      */
     protected array|Closure $insertArguments = [];
+
+    /**
+     * @var array<string, mixed>|Closure
+     */
+    protected array|Closure $options = [];
 
     protected mixed $cachedResource;
 
@@ -48,6 +56,7 @@ class ResourceBrowserField extends Field
                 ->resourceBrowser(fn (ResourceBrowserField $component) => $component->getResourceBrowser())
                 ->select(fn (): mixed => $this->getState())
                 ->insertArguments(fn (): array => $this->getInsertArguments())
+                ->options(fn (): array => $this->getOptions())
                 ->action(function (array $arguments): void {
                     $this->state($arguments[0]['resource_id'] ?? null);
 
@@ -86,6 +95,35 @@ class ResourceBrowserField extends Field
     public function getInsertArguments(): array
     {
         return (array) $this->evaluate($this->insertArguments);
+    }
+
+    /**
+     * Options passed to the BrowsableResource's constructor, in the browser and for the field's preview.
+     *
+     * @param  array<string, mixed>|Closure  $options
+     */
+    public function options(array|Closure $options): static
+    {
+        $this->options = $options;
+
+        return $this;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getOptions(): array
+    {
+        return (array) $this->evaluate($this->options);
+    }
+
+    public function getResourceBrowser(): BrowsableResource
+    {
+        if (! isset($this->resourceBrowserInstance)) {
+            $this->browserOptions = $this->getOptions();
+        }
+
+        return $this->buildResourceBrowser();
     }
 
     public function getResource(): mixed

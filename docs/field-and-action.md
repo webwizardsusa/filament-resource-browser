@@ -15,6 +15,7 @@ use Webwizardsusa\ResourceBrowser\Form\ResourceBrowserField;
 ResourceBrowserField::make('image_id')
     ->resourceBrowser(ImageBrowser::class)
     ->insertArguments(['alt' => ''])
+    ->options(['styles' => ['card' => 'Card', 'banner' => 'Banner']])
     ->onInsert(function (array $arguments, Set $set): void {
         $set('image_alt', $arguments['args']['alt'] ?? null);
     })
@@ -22,6 +23,8 @@ ResourceBrowserField::make('image_id')
 ```
 
 - `insertArguments()` fills the select form when a record is picked.
+- `options()` is passed to the BrowsableResource's constructor, for the browser and the field's preview; read them
+  with `$this->getOption('styles')`. It takes an array or a closure.
 - `onInsert()` runs after a record is picked, with `$arguments`: `resource_id`, `browserResourceType` and the select
   form's state as `args`.
 - `preview()` replaces `fieldPreview()`. Return `false` to fall back to it.

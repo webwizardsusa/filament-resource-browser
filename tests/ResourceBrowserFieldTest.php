@@ -31,6 +31,11 @@ class ResourceBrowserFieldForm extends Component implements HasActions, HasSchem
      */
     public ?array $inserted = null;
 
+    /**
+     * @var array<string, mixed>
+     */
+    public static array $browserOptions = [];
+
     public function mount(): void
     {
         $this->form->fill();
@@ -42,6 +47,7 @@ class ResourceBrowserFieldForm extends Component implements HasActions, HasSchem
             ->components([
                 ResourceBrowserField::make('note_id')
                     ->resourceBrowser(NoteBrowser::class)
+                    ->options(fn (): array => static::$browserOptions)
                     ->onInsert(function (array $arguments): void {
                         $this->inserted = $arguments;
                     }),
@@ -56,6 +62,7 @@ class ResourceBrowserFieldForm extends Component implements HasActions, HasSchem
 }
 
 beforeEach(function (): void {
+    ResourceBrowserFieldForm::$browserOptions = [];
     $this->actingAs(User::query()->create(['name' => 'Admin', 'email' => 'admin@example.com', 'password' => 'secret']));
 });
 
@@ -80,4 +87,24 @@ it('shows a preview of the picked record', function (): void {
     Livewire::test(ResourceBrowserFieldForm::class)
         ->set('data.note_id', $note->getKey())
         ->assertSee('A picked note');
+});
+
+it('opens the browser with its options', function (): void {
+    ResourceBrowserFieldForm::$browserOptions = ['prefix' => 'Note: '];
+
+    $field = Livewire::test(ResourceBrowserFieldForm::class)
+        ->instance()
+        ->form
+        ->getComponent(fn ($component): bool => $component instanceof ResourceBrowserField);
+
+    expect($field->getBrowseAction()->getOptions())->toBe(['prefix' => 'Note: ']);
+});
+
+it('builds its preview with its options', function (): void {
+    ResourceBrowserFieldForm::$browserOptions = ['prefix' => 'Note: '];
+    $note = Note::query()->create(['title' => 'A picked note']);
+
+    Livewire::test(ResourceBrowserFieldForm::class)
+        ->set('data.note_id', $note->getKey())
+        ->assertSee('Note: A picked note');
 });
