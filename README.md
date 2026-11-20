@@ -9,6 +9,7 @@
 [![Tests](https://github.com/webwizardsusa/filament-resource-browser/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/webwizardsusa/filament-resource-browser/actions/workflows/tests.yml)
 [![Total downloads](https://img.shields.io/packagist/dt/webwizardsusa/filament-resource-browser.svg)](https://packagist.org/packages/webwizardsusa/filament-resource-browser/stats)
 [![PHP version](https://img.shields.io/packagist/dependency-v/webwizardsusa/filament-resource-browser/php.svg)](https://packagist.org/packages/webwizardsusa/filament-resource-browser)
+[![Filament version](https://img.shields.io/packagist/dependency-v/webwizardsusa/filament-resource-browser/filament/filament.svg?label=Filament)](https://filamentphp.com)
 [![License](https://img.shields.io/packagist/l/webwizardsusa/filament-resource-browser.svg)](https://github.com/webwizardsusa/filament-resource-browser/blob/main/LICENSE.md)
 
 Reuse one Filament resource from another: browse its records in a modal, pick one to insert, or add or edit one
